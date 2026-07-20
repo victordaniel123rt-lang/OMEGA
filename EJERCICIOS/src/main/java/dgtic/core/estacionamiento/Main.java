@@ -50,7 +50,9 @@ public class Main {
                 case 4:
                     estacionamiento.mostrarVehiculos();
                     break;
-
+                case 5:
+                    estacionamiento.mostrarIngresos();
+                    break;
             }
         }while(opcion  != 6);
     }

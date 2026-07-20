@@ -8,8 +8,12 @@ import java.util.Optional;
 
 import static dgtic.core.estacionamiento.Tipo.*;
 
+
 public class EstacionamientoImpl implements Estacionamiento{
     List<Auto> lista = new ArrayList<>();
+    double totalRecaudado;
+    int autosAtendidos;
+    int fuera;
 
     @Override
     public String registrarEntrada(String placa, Tipo tipo, LocalTime horaEntrada) {
@@ -17,6 +21,7 @@ public class EstacionamientoImpl implements Estacionamiento{
        if(!existe){
            Auto auto = new Auto(horaEntrada, null,placa,tipo);
            lista.add(auto);
+           autosAtendidos++;
            return "El auto se ha registrado de manera exitosa, puedes estacionarte";
        }else{
             return "La placa del vehículo ingresado ya se encuentra registrada";
@@ -45,6 +50,8 @@ public class EstacionamientoImpl implements Estacionamiento{
                 total = 35*horasRedondeadas;
             }
             System.out.println("Tiempo: "+ horasRedondeadas  + " horas. El total a pagar es: " + total + " Gracias por tu visita");
+            totalRecaudado = totalRecaudado + total;
+            fuera++;
             lista.remove(auto);
         }else{
             System.out.println("No se encontró ningún vehículo con la placa introducida");
@@ -78,7 +85,20 @@ public class EstacionamientoImpl implements Estacionamiento{
     }
 
     @Override
-    public List<String> mostrarIngresos() {
-        return List.of();
+    public void mostrarIngresos() {
+        double promedio = totalRecaudado/fuera;
+        System.out.println("Total recaudado: " + totalRecaudado);
+        System.out.println("Vehículos atendidos: " + autosAtendidos);
+        System.out.println("Promedio cobrado: " + promedio);
     }
+
+
+
+
+
+
+
+
+
+
 }

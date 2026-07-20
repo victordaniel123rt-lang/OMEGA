@@ -9,6 +9,6 @@ public interface Estacionamiento  {
     void registrarSalida(String placa, LocalTime horaSalida);
     void consultarVehiculo(String placa);
     void mostrarVehiculos();
-    List<String> mostrarIngresos();
+    void mostrarIngresos();
 
 }
