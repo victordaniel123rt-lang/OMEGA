@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class Seis {
     public static void main(String[] args){
         List<String> palabras = Arrays.asList("elefante", "tigre", "iguana", "oso", "mono");
-        List<String> vocales = palabras.stream().filter(p -> p!=null && !p.isEmpty() && p.matches("^[aeiouAEIOUáéíóúÁÉÍÓÚ].*")).collect(Collectors.toList());
+        List<String> vocales = palabras.stream().map(String::toUpperCase).filter(p -> p!=null && !p.isEmpty() && p.matches("^[aeiouAEIOUáéíóúÁÉÍÓÚ].*")).collect(Collectors.toList());
         System.out.print(vocales);
     }
 }

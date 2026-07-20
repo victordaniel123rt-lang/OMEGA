@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class Cinco {
     public static void main(String[] args){
         List<String> nombres = Arrays.asList("Ana", "Luis", "Pedro");
-        String concatenado = nombres.stream().collect(Collectors.joining());
+        String concatenado = nombres.stream().collect(Collectors.joining(","));
         System.out.print(concatenado);
     }
 
