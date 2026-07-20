@@ -9,6 +9,9 @@ public class Auto {
     private LocalTime HoraEntrada;
     private LocalTime HoraSalida;
 
+    public Auto() {
+    }
+
     public Auto(LocalTime horaEntrada, LocalTime horaSalida, String placa, Tipo tipo) {
         HoraEntrada = horaEntrada;
         HoraSalida = horaSalida;

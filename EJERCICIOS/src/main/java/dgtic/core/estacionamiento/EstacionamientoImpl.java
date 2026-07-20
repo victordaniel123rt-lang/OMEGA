@@ -86,13 +86,43 @@ public class EstacionamientoImpl implements Estacionamiento{
 
     @Override
     public void mostrarIngresos() {
-        double promedio = totalRecaudado/fuera;
-        System.out.println("Total recaudado: " + totalRecaudado);
-        System.out.println("Vehículos atendidos: " + autosAtendidos);
-        System.out.println("Promedio cobrado: " + promedio);
+        double promedio =0;
+        if(fuera!=0){
+            promedio = totalRecaudado/fuera;
+            System.out.println("Total recaudado: " + totalRecaudado);
+            System.out.println("Vehículos atendidos: " + autosAtendidos);
+            System.out.println("Promedio cobrado: " + promedio);
+            System.out.println("Vehículo con mayor tiempo estacionado: " + masTiempoEstacionado().getPlaca());
+        }else{
+            System.out.println("Total recaudado: " + totalRecaudado);
+            System.out.println("Vehículos atendidos: " + autosAtendidos);
+            System.out.println("Vehículo con mayor tiempo estacionado: " + masTiempoEstacionado().getPlaca());
+        }
+
     }
 
 
+    public Auto masTiempoEstacionado(){
+        Auto mayorTiempo = lista.get(0);
+        Duration duracion = Duration.between(mayorTiempo.getHoraEntrada(), LocalTime.now());
+        long horas = duracion.toHours();
+        long minutosRestantes = duracion.toMinutes() % 60;
+        long horasRedondeadas = horas;
+        if (minutosRestantes >= 30) {
+            horasRedondeadas++;
+        }
+        for(Auto auto : lista){
+            Duration duracion2 = Duration.between(auto.getHoraEntrada(),LocalTime.now());
+            long horas2 = duracion2.toHours();
+            long minutosRestantes2 = duracion.toMinutes() % 60;
+            long horasRedondeadas2 = horas2;
+            if (minutosRestantes2 >= 30) {
+                horasRedondeadas2++;
+            }
+            if(horasRedondeadas2>horasRedondeadas) mayorTiempo = auto;
+        }
+        return mayorTiempo;
+    }
 
 
 
