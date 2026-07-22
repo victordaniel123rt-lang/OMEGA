@@ -9,11 +9,14 @@ public class Main {
 
          while(sc.hasNextLine()){
              String linea = sc.nextLine().trim();
-             sc.hasNextLine();
              if (linea.isEmpty() || linea.equalsIgnoreCase("FIN")) break;
 
              String[] partes  = linea.split(" ");
              String comando = partes[0].toUpperCase();
+             if(comando.equals("CONSULTAR")){
+                 service.consultar();
+                 continue;
+             }
              int numeroHabitacion = Integer.parseInt(partes[1]);
 
              switch (comando){
@@ -25,9 +28,6 @@ public class Main {
                      break;
                  case "MANTENIMIENTO":
                      service.mantenimiento(numeroHabitacion);
-                     break;
-                 case "CONSULTAR":
-                     service.consultar();
                      break;
                  case "HABILITAR":
                      service.habilitar(numeroHabitacion);
