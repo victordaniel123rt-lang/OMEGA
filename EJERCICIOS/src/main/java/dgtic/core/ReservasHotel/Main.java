@@ -9,6 +9,7 @@ public class Main {
 
          while(sc.hasNextLine()){
              String linea = sc.nextLine().trim();
+             sc.hasNextLine();
              if (linea.isEmpty() || linea.equalsIgnoreCase("FIN")) break;
 
              String[] partes  = linea.split(" ");
@@ -24,6 +25,12 @@ public class Main {
                      break;
                  case "MANTENIMIENTO":
                      service.mantenimiento(numeroHabitacion);
+                     break;
+                 case "CONSULTAR":
+                     service.consultar();
+                     break;
+                 case "HABILITAR":
+                     service.habilitar(numeroHabitacion);
                      break;
                  default:
                      System.out.println("Comando no reconocido: " + comando);
