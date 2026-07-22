@@ -1,10 +1,10 @@
 package dgtic.core.ReservasHotel;
 
 public interface Service {
-    void reservar(String numero);
-    void cancelar(String numero);
-    void mantenimiento(String numero);
-    void habilitar(String numero);
+    void reservar(int numero);
+    void cancelar(int numero);
+    void mantenimiento(int numero);
+    void habilitar(int numero);
     void consultar();
     void disponibles();
 }

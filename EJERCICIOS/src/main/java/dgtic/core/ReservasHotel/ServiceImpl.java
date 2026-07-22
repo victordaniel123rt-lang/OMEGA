@@ -10,7 +10,7 @@ List<Habitacion> habitaciones = List.of(new Habitacion(101), new Habitacion(102)
         new Habitacion(105), new Habitacion(106), new Habitacion(107), new Habitacion(108), new Habitacion(109));
 
     @Override
-    public void reservar(String numero) {
+    public void reservar(int numero) {
         Optional<Habitacion> optional = habitaciones.stream().filter(h->h.getNumero().equals(numero)).findFirst();
         if(optional.isPresent()){
             Habitacion habitacion = optional.get();
@@ -20,14 +20,14 @@ List<Habitacion> habitaciones = List.of(new Habitacion(101), new Habitacion(102)
                 System.out.println("ERROR, la habitación solicitada se encuentra en mantenimiento");
             }
             habitacion.setEstado(Estado.OCUPADA);
-            System.out.println("La habitación fue reservada correctamente");
+            System.out.println("Habitación " + habitacion.getNumero() + " reservada.");
         }else {
             System.out.println("No existe la habitación con el número proporcionado");
         }
     }
 
     @Override
-    public void cancelar(String numero) {
+    public void cancelar(int numero) {
         Optional<Habitacion> optional = habitaciones.stream().filter(h->h.getNumero().equals(numero)).findFirst();
         if(optional.isPresent()){
             Habitacion habitacion = optional.get();
@@ -37,14 +37,14 @@ List<Habitacion> habitaciones = List.of(new Habitacion(101), new Habitacion(102)
                 System.out.println("ERROR, la habitación solicitada se encuentra en mantenimiento");
             }
             habitacion.setEstado(Estado.LIBRE);
-            System.out.println("La reservacion fue cancelada correctamente");
+            System.out.println("Reserva inválida.");
         }else {
             System.out.println("No existe la habitación con el número proporcionado");
         }
     }
 
     @Override
-    public void mantenimiento(String numero) {
+    public void mantenimiento(int numero) {
         Optional<Habitacion> optional = habitaciones.stream().filter(h->h.getNumero().equals(numero)).findFirst();
         if(optional.isPresent()){
             Habitacion habitacion = optional.get();
@@ -54,14 +54,14 @@ List<Habitacion> habitaciones = List.of(new Habitacion(101), new Habitacion(102)
                 System.out.println("ERROR, la habitación solicitada ya se encuentra en mantenimiento");
             }
             habitacion.setEstado(Estado.MANTENIMIENTO);
-            System.out.println("La habitación se encuentra en mantenimiento");
+            System.out.println("Habitación " + habitacion.getNumero() + " enviada a mantenimiento.");
         }else {
             System.out.println("No existe la habitación con el número proporcionado");
         }
     }
 
     @Override
-    public void habilitar(String numero) {
+    public void habilitar(int numero) {
         Optional<Habitacion> optional = habitaciones.stream().filter(h->h.getNumero().equals(numero)).findFirst();
         if(optional.isPresent()){
             Habitacion habitacion = optional.get();

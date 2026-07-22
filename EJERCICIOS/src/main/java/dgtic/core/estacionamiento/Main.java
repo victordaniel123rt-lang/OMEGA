@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args){
         String placa  = "";
-                Estacionamiento estacionamiento = new EstacionamientoImpl();
+        Estacionamiento estacionamiento = new EstacionamientoImpl();
         Scanner sc = new Scanner(System.in);
         int opcion;
         do{
